@@ -1,6 +1,6 @@
 from flask import *
 
-app = Flask(__name__, static_url_path = 'template/')
+app = Flask(__name__, static_folder = 'static')
 
 @app.route('/admin', methods = ['GET', 'POST'])
 def login():
@@ -10,6 +10,10 @@ def login():
             return render_template('admin.html')
         else:
             return redirect(url_for('login'))
+    return render_template('login.html')
+
+@app.route('/')
+def index():
     return render_template('index.html')
 
 if __name__=='__main__':

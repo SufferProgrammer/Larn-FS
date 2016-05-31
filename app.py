@@ -10,7 +10,7 @@ def login():
             return render_template('admin.html')
         else:
             return redirect(url_for('login'))
-    return render_template('login.html')
+    return render_template('login.html', error=error)
 
 @app.route('/')
 def index():
