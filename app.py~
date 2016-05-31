@@ -1,9 +1,15 @@
 from flask import *
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder = '/template')
 
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] == ['admin'] or request.form['password'] == 'admin':
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/admin')
