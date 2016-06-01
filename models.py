@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import backref
 
-eng = create_engine('sqlite:///database/database.db', echo=True)
+eng = create_engine('sqlite:///management/database/database.db', echo=True)
 base = declarative_base()
 
 class User(base):
