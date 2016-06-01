@@ -1,4 +1,8 @@
 from flask import *
+from sqlalchemy.orm import sessionmaker
+from models import *
+
+eng = create_engine('sqlite:///management/database/database.db', echo = True)
 
 app = Flask(__name__, static_folder = 'static')
 
@@ -6,11 +10,14 @@ app = Flask(__name__, static_folder = 'static')
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] == ['admin'] or request.form['password'] == 'admin':
-            return render_template('admin.html')
-        else:
-            return redirect(url_for('login'))
-    return render_template('login.html', error=error)
+        userData = 'admin'
+        user = request.form['username']
+        passwd = request.form['password']
+        if user == userData or passwd == userData:
+            return render_template('admin.html', user=userData)
+    else:
+        flash = 'username or password is wrong !!'
+    return render_template('login.html')
 
 @app.route('/')
 def index():
