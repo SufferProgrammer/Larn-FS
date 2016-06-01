@@ -10,16 +10,15 @@ app = Flask(__name__, static_folder = 'static')
 @app.route('/admin', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        uname = str(request.form['username'])
-        passwd = str(request.form['password'])
+        uname = request.form['username']
+        passwd = request.form['password']
 
         sess = sessionmaker (bind=eng)
         inputData = sess()
-        Qu = inputData.query(User).filter(User.user.in_([uname]), User.passwd.in_([passwd]))
+        Qu = inputData.query(User).filter(User.user.in_([uname]), User.password.in_([passwd]))
         res = Qu.first()
         if res:
             session['logged_in']=True
-            return render_template('admin.html')
         else:
             flash ("somethink error")
     return render_template('login.html')
