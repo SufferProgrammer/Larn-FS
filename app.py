@@ -1,11 +1,12 @@
 from flask import *
 from sqlalchemy.orm import sessionmaker
 from models import *
+import sqlite3 as Db
 import os
 
 eng = create_engine('sqlite:///management/database/database.db', echo = True)
-
 app = Flask(__name__, static_folder = 'static')
+
 
 @app.route('/admin', methods = ['GET', 'POST'])
 def login():
@@ -26,8 +27,18 @@ def login():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+   con = Db.connect("management/database/database.db")
+   con.row_factory = Db.Row
+   
+   cur = con.cursor()
+   cur.execute("select * from post")
+   
+   rows = cur.fetchall();
+   return render_template("index.html",rows = rows)
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 if __name__=='__main__':
     app.secret_key = os.urandom(12)

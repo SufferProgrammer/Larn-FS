@@ -1,17 +1,28 @@
 <html>
 <head>
     <title>
-        index
+        Index
     </title>
-    <link rel="stylesheet" href=" {{ url_for('static', filename = 'index.style.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename = 'css/index.style.css') }}">
 </head>
 <body>
     <h1>
         <center>
-            Hello {{ request.form.username }}
-            <p>
-                <a href="{{ url_for('login') }}">Click here to log out</a>
-        </center> 
+            Under Maintenance
+        </center>
     </h1>
+<table border = 1>
+         <thead>
+            <td>data</td>
+            <td>date</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["data"]}}</td>
+               <td>{{row["date_post"]}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
 </body>
 </html>
