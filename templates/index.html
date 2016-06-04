@@ -1,43 +1,17 @@
 <html>
 <head>
     <title>
-        Index
+        index
     </title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-    <linl rel="stylesheet" href= "{{ url_for('static', filename = 'css/style.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename = 'index.style.css') }}">
 </head>
 <body>
     <h1>
-        <a href="">
         <center>
-            Try flask with database
-        </center>
-        </a>
+            Hello {{ request.form.username }}
+            <p>
+                <a href="{{ url_for('login') }}">Click here to log out</a>
+        </center> 
     </h1>
-    <h1>
-    <a href="">
-        This is sample comment 1st
-    </h1>
-    </a>
-    <p>
-        This is sample text 1st
-    </p>
-    <h1>
-    <a href="">
-        This is sample comment 2nd
-    </h1>
-    </a>
-    <p>
-        This is sample text 2nd
-    </p>
-    <h1>
-    <a href="">
-        This is sample comment 3rd
-    </h1>
-    </a>
-    <p>
-        This is sample text 3rd
-    </p>
 </body>
 </html>
