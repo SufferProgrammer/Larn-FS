@@ -36,6 +36,30 @@ def index():
    rows = cur.fetchall();
    return render_template("index.html",rows = rows)
 
+@app.route('/post', methods = ['GET', 'POST'])
+def post():
+    if request.method == 'POST':
+        title = request.form['title']
+        cont = request.form['content']
+        date = request.form['pdate']
+                
+        db = Db.connect('management/database/database.db')
+        db.row_factory = Db.Row
+        
+        if title == null and cont == null and date == null:
+
+            error = "Don't leave blank form"
+            return render_template('post.html', error=error)
+        else:
+            
+            ex = db.cursor()
+            ex.execute("INSERT INTO post(title, content, p_date) VALUES (?, ?, ?)" (title, cont, date))
+            ex.commit()
+            ex.close()
+            flash("success create post")
+        return redirect(url_for('index'))
+    return render_template('post.html')
+
 @app.route('/register')
 def register():
     return render_template('register.html')

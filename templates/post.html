@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>
+        Post
+    </title>
+</head>
+<body>
+    <form method="post">
+        Title<br />
+        <input type="text" name="title" ><br />
+        Content<br />
+        <textarea name="content"></textarea><br />
+        Date<br />
+        <input type="date" name="pdate">
+        <input type="submit" value="Post"><br />
+    </form>
+    {% if error %}
+        {{ error }}
+    {% endif %}
+</body>
+</html>

@@ -24,6 +24,9 @@
                 <input type="submit" value="Login">
             </form>
         </div>
+        {% if error %}
+            {{ error }}
+        {% endif %}
     </div>
 </body>
 </html>

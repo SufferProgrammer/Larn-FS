@@ -7,22 +7,29 @@
 </head>
 <body>
     <h1>
-        <center>
-            Under Maintenance
-        </center>
+        Coba
     </h1>
-<table border = 1>
-         <thead>
-            <td>data</td>
-            <td>date</td>
-         </thead>
-         
-         {% for row in rows %}
-            <tr>
-               <td>{{row["data"]}}</td>
-               <td>{{row["date_post"]}}</td>	
-            </tr>
-         {% endfor %}
-      </table>
+    {% for row in rows %}
+        <h1>        
+            <a href="">
+                {{row["title"]}}
+            </a>
+        </h1>
+        <p>        
+            {{row["content"]}}
+        </p>
+        <p>
+            <i>       
+            {{row["p_date"]}}
+            </i>
+        </p>	
+    {% endfor %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 </body>
 </html>
