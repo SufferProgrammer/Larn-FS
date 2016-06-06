@@ -1,14 +1,16 @@
 from flask import *
 from sqlalchemy.orm import sessionmaker
 from models import *
+from flask_admin import Admin
 import sqlite3 as Db
 import os
 
 eng = create_engine('sqlite:///management/database/database.db', echo = True)
 app = Flask(__name__, static_folder = 'static')
 
+admin = Admin(app, name='microblog', template_mode='bootstrap3')
 
-@app.route('/admin', methods = ['GET', 'POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         uname = str(request.form['username'])
@@ -53,9 +55,9 @@ def post():
         else:
             
             ex = db.cursor()
-            ex.execute("INSERT INTO post(title, content, p_date) VALUES (?, ?, ?)" (title, cont, date))
-            ex.commit()
-            ex.close()
+            ex.execute("INSERT INTO post(title, content, p_date) VALUES (?, ?, ?)", (title, cont, date))
+            db.commit()
+            db.close()
             flash("success create post")
         return redirect(url_for('index'))
     return render_template('post.html')

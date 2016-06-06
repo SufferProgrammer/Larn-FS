@@ -3,6 +3,11 @@
     <title>
         Post
     </title>
+      <link href="{{ url_for('static', filename ='css/jquery-ui.css') }}" rel="stylesheet">
+      <script src="{{ url_for('static', filename ='js/jquery.js') }}"></script>
+      <script src="{{ url_for('static', filename ='js/jquery-ui.js') }}"></script>
+      <script src="{{ url_for('static', filename ='js/jquery-ui.min.js') }}"></script>
+      <script src="{{ url_for('static', filename ='js/dPicker.js') }}"></script>
 </head>
 <body>
     <form method="post">
@@ -11,7 +16,7 @@
         Content<br />
         <textarea name="content"></textarea><br />
         Date<br />
-        <input type="date" name="pdate">
+        <input type="text" name="pdate" id='datepicker'><br>
         <input type="submit" value="Post"><br />
     </form>
     {% if error %}
