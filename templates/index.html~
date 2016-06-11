@@ -11,7 +11,7 @@
     </h1>
     {% for row in rows %}
         <h1>        
-            <a href="{{row['content'] }}">
+            <a href="">
                 {{row["title"]}}
             </a>
         </h1>
@@ -31,7 +31,5 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-
-<br ><a href="{{ url_for('post') }}">post somethink</a>
 </body>
 </html>

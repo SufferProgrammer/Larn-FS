@@ -1,13 +1,16 @@
 from flask import *
 from sqlalchemy.orm import sessionmaker
 from models import *
+from flask_admin import Admin
 import sqlite3 as Db
 import os
 
 eng = create_engine('sqlite:///management/database/database.db', echo = True)
 app = Flask(__name__, static_folder = 'static')
 
-@app.route('/admin', methods = ['GET', 'POST'])
+admin = Admin(app, name='microblog', template_mode='bootstrap3')
+
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         uname = str(request.form['username'])
@@ -19,10 +22,10 @@ def login():
         res = Qu.first()
         if res:
             session['logged_in']=True
-            return redirect(url_for('admin.html'))
+            return render_template('admin.html')
         else:
             flash ("somethink error")
-    return redirect(url_for('login.html'))
+    return render_template('login.html')
 
 @app.route('/')
 def index():
@@ -38,28 +41,26 @@ def index():
 @app.route('/post', methods = ['GET', 'POST'])
 def post():
     if request.method == 'POST':
-        title = str(request.form['title'])
-        cont = str(request.form['content'])
+        title = request.form['title']
+        cont = request.form['content']
         date = request.form['pdate']
                 
         db = Db.connect('management/database/database.db')
         db.row_factory = Db.Row
         
-        if title != '' and cont != '' and date != '':
+        if title == null and cont == null and date == null:
 
+            error = "Don't leave blank form"
+            return render_template('post.html', error=error)
+        else:
+            
             ex = db.cursor()
-            ex.execute('INSERT INTO post(title, content, p_date) VALUES (?, ?, ?)', (title, cont, date))
+            ex.execute("INSERT INTO post(title, content, p_date) VALUES (?, ?, ?)", (title, cont, date))
             db.commit()
             db.close()
-            flash("success add post")
-            return redirect(url_for('index'))
-
-        else:
-
-            error = "one form is empty"
-        return render_template('post.html', error=error)
+            flash("success create post")
+        return redirect(url_for('index'))
     return render_template('post.html')
-
 
 @app.route('/register')
 def register():

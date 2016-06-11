@@ -22,7 +22,5 @@
     {% if error %}
         {{ error }}
     {% endif %}
-
-<br><a href="{{ url_for('index') }}">go back</a>
 </body>
 </html>
