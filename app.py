@@ -7,7 +7,7 @@ import os
 eng = create_engine('sqlite:///management/database/database.db', echo = True)
 app = Flask(__name__, static_folder = 'static')
 
-@app.route('/admin', methods = ['GET', 'POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         uname = str(request.form['username'])
@@ -18,11 +18,21 @@ def login():
         Qu = inputData.query(User).filter(User.user.in_([uname]), User.passwd.in_([passwd]))
         res = Qu.first()
         if res:
+
+            db = Db.connect('management/database/database.db')
+            db.row_factory = Db.Row
+
+            ex = db.cursor()
+            ex.execute('select * from post')
+
+            data = ex.fetchall()
+
             session['logged_in']=True
-            return redirect(url_for('admin.html'))
+            flash("hello admin !!")
+            return render_template('admin.html', data=data)
         else:
-            flash ("somethink error")
-    return redirect(url_for('login.html'))
+            return render_template('login.html')
+    return render_template('login.html')
 
 @app.route('/')
 def index():
@@ -64,6 +74,7 @@ def post():
 @app.route('/register')
 def register():
     return render_template('register.html')
+
 
 if __name__=='__main__':
     app.secret_key = os.urandom(12)

@@ -1,37 +1,74 @@
+
+<!DOCTYPE html>
 <html>
 <head>
+    
     <title>
-        Index
+       Index
     </title>
-    <link rel="stylesheet" href=" {{ url_for('static', filename = 'css/index.style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>    
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/index.style.css') }}">
 </head>
 <body>
-    <h1>
-        Coba
-    </h1>
-    {% for row in rows %}
-        <h1>        
-            <a href="{{row['content'] }}">
-                {{row["title"]}}
-            </a>
-        </h1>
-        <p>        
-            {{row["content"]}}
-        </p>
-        <p>
-            <i>       
-            {{row["p_date"]}}
-            </i>
-        </p>	
-    {% endfor %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                {{ message }}
+    <div id="header">        
+        <div  class="blog-id">
+            <h1>
+                <a href="#main-content">
+                    SufferProgrammer
+                </a>
+            </h1>
+            <form methode="get" class="blog-id">
+                <input type="search" name="search" placeholder="Enter to search">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+    <nav id="navigation">
+        <ul>
+            <li>
+                <a href="{{ url_for('register')}}" target="_blank">
+                    Register
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('login')}}" target="_blank">
+                    Login
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('post')}}" target="_blank">
+                    Post
+                </a>
+            </li>
+        </ul>       
+    </nav>
+    <div id="wrapper">
+        <div id="main-content">
+            {% for rows in rows %}
+                <br>
+                <h2>
+                    <a href="">
+                        {{ rows.title }}
+                    </a>
+                </h2>
+                <br>
+                <p>
+                    {{ rows.content }}
+                </p>
+                <br>
+                    {{ rows.p_date }}
+                <br>
             {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-<br ><a href="{{ url_for('post') }}">post somethink</a>
+        </div>
+    </div>
+    <div id="footer">
+        <a href="mailto:oniioniichan@gmail.com">Email</a>
+        <a href="telp:081351934558">Contact</a>
+        <a href="https://sufferprogrammer.github.io/cv">About</a>
+        <div class="footer-copyright">
+            <strong>Copyright</strong> &copy; 2016 SufferProgrammer
+        </div>
+    </div>
 </body>
 </html>
+

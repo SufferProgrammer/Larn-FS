@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif; 
+}
+
+p{
+    text-align: justify;
+}
+
+body{
+    background: #60CBF7;
+}
+
+#header{
+    background: #FDE74C;
+    padding: 30px;
+}
+
+#header .blog-id{
+    text-align: left;
+    text-decoration: none;
+    color: #9BC53D;
+}
+
+#header .blog-id form{
+    float: right;
+}
+
+#header .blog-id a{
+    text-decoration: none;
+    color: #9BC53D;    
+}
+
+#footer{
+    background: #FA7921;
+    padding: 15px;
+}
+
+#footer a{
+    text-decoration: none;
+    color: white;
+    padding: 0px 3px;
+}
+
+#footer .footer-copyright{
+    float: right;
+}
+
+#footer .footer-content{
+    border-bottom: 1.5px solid;
+    padding: 15px;
+    text-align: left;
+}
+
+#wrapper{
+    padding: 45px;
+    margin: 0 auto;
+    width: 720px;
+}
+
+#main-content h2 a{
+    text-decoration: none;
+    color: #E55934;
+}
+
+#navigation{
+    list-style: none;
+    background: #9BC53D;
+}
+
+#navigation ul{
+    padding: 15px;
+}
+
+#navigation ul li{
+    display: inline;
+    padding: 15px;
+}
+
+#navigation ul li a{
+    text-decoration: none;
+    color: white;
+    float: right;
+    padding: 1.5px 17px;
+    border-left: 1px solid white;
+    transition-duration: 0.4s;
+}
+
+#navigation ul li a:hover{
+    color: black;
+    border-left: 1px solid black;
+}
+
+#navigation form{
+    position: left;
+}
