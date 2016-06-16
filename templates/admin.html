@@ -3,26 +3,42 @@
 <head>
     
     <title>
-       Admin
+       Admin Page
     </title>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>    
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin.style.css') }}">
 </head>
 <body>
-    <div id="header">
-        <h1 class="blog-id">
-            <a href="#main-content">
-                SufferProgrammer
-            </a>
-        </h1>
-    <form methode="get">
-        <input type="search" name="search" placeholder="Enter to search">
-        <input type="submit" value="Search">
-    </form>
+    <div id="header">        
+        <div  class="blog-id">
+            <h1>
+                <a href="{{ url_for('index') }}">
+                    SufferProgrammer
+                </a>
+            </h1>
+        </div>
     </div>
+    <nav id="navigation">
+        <ul>
+            <li>
+                <a href="{{ url_for('login')}}">
+                    Logout
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('post')}}" target="_blank">
+                    Post
+                </a>
+            </li>
+        </ul>       
+    </nav>
     <div id="wrapper">
         <div id="main-content">
-            
+            <h1>
+                <center>
+                    This is admin page
+                </center>
+            </h1>
         </div>
     </div>
     <div id="footer">

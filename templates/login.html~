@@ -3,21 +3,16 @@
 <head>
     
     <title>
-       Post
+       Admin Page
     </title>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>    
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/post.style.css') }}">
-    <link href="{{ url_for('static', filename ='css/jquery-ui.css') }}" rel="stylesheet">
-    <script src="{{ url_for('static', filename ='js/jquery.js') }}"></script>
-    <script src="{{ url_for('static', filename ='js/jquery-ui.js') }}"></script>
-    <script src="{{ url_for('static', filename ='js/jquery-ui.min.js') }}"></script>
-    <script src="{{ url_for('static', filename ='js/dPicker.js') }}"></script>    
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/login.style.css') }}">   
 </head>
 <body>
     <div id="header">        
         <div  class="blog-id">
             <h1>
-                <a href="#main-content">
+                <a href="{{ url_for('index') }}">
                     SufferProgrammer
                 </a>
             </h1>
@@ -31,7 +26,7 @@
         <ul>
             <li>
                 <a href="{{ url_for('login')}}" target="_blank">
-                    Login
+                    Logout
                 </a>
             </li>
             <li>
@@ -43,7 +38,15 @@
     </nav>
     <div id="wrapper">
         <div id="main-content">
-
+            <form method="post">
+                <label for="username">Username</label>
+                <input type="Text" name="username" placeholder="Enter Username" />
+                <br>
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter Password" />
+                <br>
+                <input type="submit" value="Login">
+            </form>
         </div>
     </div>
     <div id="footer">

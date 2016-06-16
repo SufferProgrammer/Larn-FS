@@ -1,32 +1,64 @@
+<!DOCTYPE html>
 <html>
 <head>
+    
     <title>
-        Login
+       Admin Page
     </title>
-    <link rel="stylesheet" href=" {{ url_for('static', filename = 'css/login.style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>    
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/login.style.css') }}">   
 </head>
 <body>
-    <h1>
-        <center>
-            Under Maintenance
-        </center>
-    </h1>
-    <div id="wrapper">
-        <div id="confirm">
+    <div id="header">        
+        <div  class="blog-id">
             <h1>
-                Login
-            </h1>        
-            <form method = "post">
-                Username<br />
-                <input type="text" name="username" placeholder="Enter Username"><br />
-                Password<br />
-                <input type="password" name="password" placeholder="Enter Password"><br />
+                <a href="{{ url_for('index') }}">
+                    SufferProgrammer
+                </a>
+            </h1>
+            <form methode="get" class="blog-id">
+                <input type="search" name="search" placeholder="Enter to search">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+    <nav id="navigation">
+        <ul>
+            <li>
+                <a href="{{ url_for('login')}}" target="_blank">
+                    Logout
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('post')}}" target="_blank">
+                    Post
+                </a>
+            </li>
+        </ul>       
+    </nav>
+    <div id="wrapper">
+        <div id="main-content">
+            <form method="post">
+                <label for="username">Username</label>
+                <br>
+                <input type="Text" name="username" placeholder="Enter Username" />
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="password" placeholder="Enter Password" />
+                <br>
                 <input type="submit" value="Login">
             </form>
         </div>
-        {% if error %}
-            {{ error }}
-        {% endif %}
+    </div>
+    <div id="footer">
+        <a href="mailto:oniioniichan@gmail.com">Email</a>
+        <a href="telp:081351934558">Contact</a>
+        <a href="https://sufferprogrammer.github.io/cv">About</a>
+        <div class="footer-copyright">
+            <strong>Copyright</strong> &copy; 2016 SufferProgrammer
+        </div>
     </div>
 </body>
 </html>
+

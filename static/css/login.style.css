@@ -1,63 +1,122 @@
 *{
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif; 
 }
 
-#wrapper{
-    width: 720px;
-    margin: 0 auto;
-    padding: 100px 50px;
-    background-image: url(login.form.png);
-    background-repeat: no-repeat;
-    background-size: 350px  365px;
-    background-position: center center; 
+p{
+    text-align: justify;
 }
 
 body{
-    background-color: #ffffff;
+    background: #60CBF7;
 }
 
-#confirm{
-    margin: 95px;
-    /*padding-top: 10px;*/
-    padding-left: 150px;
-}
-
-input[type="text"]{
-    border: none;
-    border-bottom: 2px solid yellow;
-    padding-right: 13%;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0);
-    outline: none;
-    
-}
-
-input[type="password"]{
-    border: none;
-    border-bottom: 2px solid yellow;
-    padding-right: 13%;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0);
-    outline: none;
-}
-
-input[type="submit"]{
-    background-color: rgba(146, 165, 170, 0.53);
-    transition-duration: 0.4s;
-    color: black;
-    border: 1.5px solid black;
-    border-radius: 3.5px;
-    text-decoration: none;
+#header{
+    background: #FDE74C;
     padding: 30px;
-    margin: 20px;
 }
 
-input[type="submit"]:hover{
-    background-color: #ffffff;
-    color: white;
+#header .blog-id{
+    text-align: left;
     text-decoration: none;
-    border: 1.5px black solid;
-    text-align: center;
-    color: #000000
+    color: #9BC53D;
+}
+
+#header .blog-id form{
+    float: right;
+}
+
+#header .blog-id a{
+    text-decoration: none;
+    color: #9BC53D;    
+}
+
+#footer{
+    background: #FA7921;
+    padding: 15px;
+}
+
+#footer a{
+    text-decoration: none;
+    color: white;
+    padding: 0px 3px;
+}
+
+#footer .footer-copyright{
+    float: right;
+}
+
+#footer .footer-content{
+    border-bottom: 1.5px solid;
+    padding: 15px;
+    text-align: left;
+}
+
+#wrapper{
+    padding: 45px;
+    margin: 0 auto;
+    width: 720px;
+}
+
+#main-content h2 a{
+    text-decoration: none;
+    color: #E55934;
+}
+
+#navigation{
+    list-style: none;
+    background: #9BC53D;
+}
+
+#navigation ul{
+    padding: 15px;
+}
+
+#navigation ul li{
+    display: inline;
+    padding: 15px;
+}
+
+#navigation ul li a{
+    text-decoration: none;
+    color: white;
+    float: right;
+    padding: 1.5px 17px;
+    border-left: 1px solid white;
+    transition-duration: 0.4s;
+}
+
+#navigation ul li a:hover{
+    color: black;
+    border-left: 1px solid black;
+}
+
+#main-content input{
+    border: none;
+    background: none;
+    outline: none;
+}
+
+#main-content input[type=text]{
+    border-bottom: 1px solid #9BC53D;
+    padding: 15px 0px;
+}
+#main-content input[type=password]{
+    border-bottom: 1px solid #9BC53D;
+    padding: 15px 0px;
+}
+#main-content input[type=submit]{
+    border: 1px solid white;
+    background: rgba(0, 0, 0, 0.37);
+    padding: 10px 50px;
+    margin: 20px 45%;
+    border-radius: 2.5px;
+    color: white;
+    transition-duration: 0.4s;
+}
+#main-content input[type=submit]:hover{
+    border: 1px solid white;
+    background: white;
+    color: black;
 }
